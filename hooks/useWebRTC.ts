@@ -117,7 +117,7 @@ export const useWebRTC = () => {
       // Listen for remote answer
       onSnapshot(roomRef, (snapshot) => {
         const data = snapshot.data();
-        if (!pcRef.current?.currentRemoteDescription && data?.answer) {
+        if (!pcRef.current?.currentRemoteDescription && data?.answer && pcRef.current) {
           const answerDescription = new RTCSessionDescription(data.answer);
           pcRef.current.setRemoteDescription(answerDescription);
         }
